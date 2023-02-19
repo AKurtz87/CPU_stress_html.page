@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cool Effects</title>
+    <style>
+      /* Add a subtle texture to the background */
+      body {
+        background: linear-gradient(to bottom, #ff8c00, #ffd700);
+        background-size: 100% 100%;
+        animation: none;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      /* Add a subtle texture to the background */
+      body::after {
+        content: "";
+        display: block;
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle, #fff 10%, transparent 10.01%),
+          radial-gradient(circle, #fff 10%, transparent 10.01%);
+        background-repeat: no-repeat;
+        background-position: 0 0, 50px 50px;
+        background-size: 100px 100px;
+        opacity: 0.05;
+      }
+
+      /* Add some cool hover effects to the emojis */
+      .emoji:hover {
+        transform: scale(1.5);
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer; /* Change cursor to hand */
+      }
+
+      /* Style the header text */
+      h1 {
+        color: rgb(237, 9, 9);
+        font-size: 2.5rem;
+        text-align: center;
+        text-shadow: 2px 2px #000;
+      }
+
+      /* Style the random words */
+      .random-words {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      /* Add some animation to the random words */
+      .random-words span {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      /* Define the keyframes for the animation */
+      @keyframes float {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(0, 10px);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Click on the Emoji!</h1>
+
+    <div class="random-words">
+      <span>幸運は大胆な者に味方する</span>
+    </div>
+
+    <div style="text-align: center">
+      <span
+        class="emoji"
+        style="font-size: 6rem"
+        onclick="calculatePi(maxIterations, piCallback);"
+        >&#x1F929;</span
+      >
+    </div>
+
+    <script>
+      function calculatePi(numIterations, callback) {
+        let pi = 0;
+        let sign = 1;
+        for (let i = 0; i < numIterations; i++) {
+          pi += sign * (4 / (2 * i + 1));
+          sign *= -1;
+        }
+        callback(pi);
+      }
+
+      let maxIterations = 1;
+
+      function piCallback(pi) {
+        console.log(`Pi calculated with ${maxIterations} iterations: ${pi}`);
+        maxIterations *= 2;
+        calculatePi(maxIterations, piCallback);
+      }
+    </script>
+  </body>
+</html>

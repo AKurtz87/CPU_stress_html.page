@@ -1,0 +1,30 @@
+code wars
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Calculate Pi</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function calculatePi(numIterations, callback) {
+    let pi = 0;
+    let sign = 1;
+    for (let i = 0; i < numIterations; i++) {
+      pi += sign * (4 / (2 * i + 1));
+      sign *= -1;
+    }
+    callback(pi);
+  }
+
+  let maxIterations = 1;
+
+  function piCallback(pi) {
+    console.log(`Pi calculated with ${maxIterations} iterations: ${pi}`);
+    maxIterations *= 2;
+    calculatePi(maxIterations, piCallback);
+  }
+
+  calculatePi(maxIterations, piCallback);
+</script>
